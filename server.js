@@ -1,9 +1,36 @@
-//Servidor
+const Hapi=require('hapi');
 
-const http= require('http');
+// Create a server with a host and port
+const server=Hapi.server({
+    host:'localhost',
+    port:8000
+});
 
-http.createServer(function(req,res){
-    res.writeHead(200,{'Content-Type': 'text/html'})
-    res.end('Hola Mundo');
+//Rutas
 
-}).listen(3000);
+const rutas = require('./Routes');
+
+// Add the route
+
+server.route(
+    rutas.rutas
+    
+    
+
+);
+
+// Start the server
+async function start() {
+
+    try {
+        await server.start();
+    }
+    catch (err) {
+        console.log(err);
+        process.exit(1);
+    }
+
+    console.log('Server running at:', server.info.uri);
+};
+
+start();
