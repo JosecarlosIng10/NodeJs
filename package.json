@@ -1,0 +1,23 @@
+{
+  "name": "nodejs",
+  "version": "1.0.0",
+  "description": "Curso 2018",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JosecarlosIng10/NodeJs.git"
+  },
+  "author": "Jose Carlos Estrada",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JosecarlosIng10/NodeJs/issues"
+  },
+  "homepage": "https://github.com/JosecarlosIng10/NodeJs#readme",
+  "dependencies": {
+    "hapi": "^17.7.0"
+  }
+}
