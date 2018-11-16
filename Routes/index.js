@@ -1,6 +1,15 @@
 const lista=[1,2,3];
+
+const Handlers = require('../Handlers');
 module.exports.rutas=[
-        
+      
+    {
+        method:'POST',
+        path:'/carro',
+        handler:Handlers.carroHandler.agregarCarros
+
+
+    },
     {
    method:'GET',
    path:'/hello',

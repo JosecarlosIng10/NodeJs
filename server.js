@@ -1,3 +1,6 @@
+require('dotenv').config();
+const db = require('./Config/database').db;
+
 const Hapi=require('hapi');
 
 // Create a server with a host and port
