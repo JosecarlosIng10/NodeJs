@@ -6,10 +6,18 @@ module.exports.rutas=[
     {
         method:'POST',
         path:'/carro',
-        handler:Handlers.carroHandler.agregarCarros
+        handler:Handlers.carroHandler.agregarCarrosAsyncAwait
 
 
     },
+    {
+        method:'POST',
+        path:'/busquedaAvanzada',
+        handler:Handlers.carroHandler.busquedaAvanzada
+
+
+    },
+
     {
    method:'GET',
    path:'/hello',
@@ -27,6 +35,13 @@ module.exports.rutas=[
            return{data: lista};
        }
    },
+   {
+    method:'GET',
+    path:'/mostrar',
+    handler:Handlers.carroHandler.mostrarCarros
+    
+},
+
 
    {
        method:'POST',
