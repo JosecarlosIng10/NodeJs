@@ -75,6 +75,46 @@ module.exports.rutas=[
           lista.splice(request.params.index,1);
            return {data: lista};
        }
-   }
+   },
+
+   {
+    method: 'PUT',
+    path: '/carro/{index}',
+    handler:Handlers.carroHandler.actualizarCarrosAsyncAwait,
+    config:{
+        pre: [
+            {method: Handlers.preHandler.preValidar, assign: 'preTokenVal'}
+        ]
+    },
+},
+
+
+{
+    method: 'DELETE',
+    path: '/carro/{index}',
+    handler:Handlers.carroHandler.eliminarCarrosAsyncAwait,
+    config:{
+        pre: [
+            {method: Handlers.preHandler.preValidar, assign: 'preTokenVal'}
+        ]
+    },
+},
+
+{
+    method:'POST',
+    path:'/token',
+    handler: Handlers.token.tokenSign
+   
+},
+{
+    method: 'GET',
+    path: '/carro',
+    config:{
+        pre: [
+            {method: Handlers.preHandler.preValidar, assign: 'preTokenVal'}
+        ]
+    },
+    handler:Handlers.carroHandler.mostrarCarros
+}
 
 ]

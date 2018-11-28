@@ -59,6 +59,10 @@ try {
 
 module.exports.mostrarCarros = async (request , h)=>{
     try {
+        const {preTokenVal} = request.pre;
+        if(preTokenVal === -1){
+            return h.response({error: 'no tiene token'});
+        }
         if (!request.query.id){
         const carro = await Carro.find();
         return carro;
@@ -88,6 +92,33 @@ module.exports.agregarCarrosAsyncAwait= async(request,h)=>{
    
 }
 
+
+module.exports.actualizarCarrosAsyncAwait = async (req, h)=>{
+    try {
+        const {preTokenVal} = req.pre;
+        if(preTokenVal === -1){
+            return h.response({error: 'no tiene token'});
+        }
+        const carroActualizado = await Carro.findByIdAndUpdate(req.params.index, 
+            req.payload.data);
+        return h.response(carroActualizado);
+    } catch (error) {
+        return h.response(error);
+    }   
+}
+
+module.exports.eliminarCarrosAsyncAwait = async (req, h)=>{
+    try {
+        const {preTokenVal} = req.pre;
+        if(preTokenVal === -1){
+            return h.response({error: 'no tiene token'});
+        }
+        const carroEliminado = await Carro.findByIdAndDelete(req.params.index);
+        return h.response(carroEliminado);
+    } catch (error) {
+        return h.response(error);
+    }   
+}
 
 //Async crea una promesa.
 
