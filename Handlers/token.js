@@ -1,9 +1,9 @@
 const jwt = require('jsonwebtoken');
-const expiresIn=20;
-module.exports.tokenSign= (Request,h)=>{
+const expiresIn=1000;
+module.exports.tokenSign= (payload)=>{
    
     try{
-    var token = jwt.sign(Request.payload.data, process.env.SECUREJWT, {expiresIn});
+    var token = jwt.sign(payload, process.env.SECUREJWT, {expiresIn});
     }
     catch(err){
         console.log(err);
@@ -13,3 +13,4 @@ module.exports.tokenSign= (Request,h)=>{
     return {token};
 
 };
+

@@ -22,6 +22,20 @@ server.route(
 
 );
 
+
+
+server.ext('onPreResponse', (Request,h)=>{
+    if (Request.response!=null && Request.response.header != null){
+        Request.response.header('Access.Control.Allow.Origin','*');
+        Request.response.header('Access.Control.Allow.Headers','Content-Type,token');
+        Request.response.header('Access.Control.Allow.Methods','GET,POST,PUT,DELETE');
+        console.log(Request.headers);
+    }
+    return h.continue;
+
+
+
+});
 // Start the server
 async function start() {
 

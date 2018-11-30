@@ -115,6 +115,19 @@ module.exports.rutas=[
         ]
     },
     handler:Handlers.carroHandler.mostrarCarros
+},
+{
+    method:'POST',
+    path: '/usuario',
+    handler:Handlers.usuarioHandler.addUsuario
+
+
+},
+{
+    method:'POST',
+    path:'/login',
+    handler: Handlers.usuarioHandler.login
+   
 }
 
 ]
