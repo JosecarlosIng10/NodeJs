@@ -1,6 +1,23 @@
 const lista=[1,2,3];
+
+const Handlers = require('../Handlers');
 module.exports.rutas=[
-        
+      
+    {
+        method:'POST',
+        path:'/carro',
+        handler:Handlers.carroHandler.agregarCarrosAsyncAwait
+
+
+    },
+    {
+        method:'POST',
+        path:'/busquedaAvanzada',
+        handler:Handlers.carroHandler.busquedaAvanzada
+
+
+    },
+
     {
    method:'GET',
    path:'/hello',
@@ -18,6 +35,13 @@ module.exports.rutas=[
            return{data: lista};
        }
    },
+   {
+    method:'GET',
+    path:'/mostrar',
+    handler:Handlers.carroHandler.mostrarCarros
+    
+},
+
 
    {
        method:'POST',
@@ -51,6 +75,59 @@ module.exports.rutas=[
           lista.splice(request.params.index,1);
            return {data: lista};
        }
-   }
+   },
+
+   {
+    method: 'PUT',
+    path: '/carro/{index}',
+    handler:Handlers.carroHandler.actualizarCarrosAsyncAwait,
+    config:{
+        pre: [
+            {method: Handlers.preHandler.preValidar, assign: 'preTokenVal'}
+        ]
+    },
+},
+
+
+{
+    method: 'DELETE',
+    path: '/carro/{index}',
+    handler:Handlers.carroHandler.eliminarCarrosAsyncAwait,
+    config:{
+        pre: [
+            {method: Handlers.preHandler.preValidar, assign: 'preTokenVal'}
+        ]
+    },
+},
+
+{
+    method:'POST',
+    path:'/token',
+    handler: Handlers.token.tokenSign
+   
+},
+{
+    method: 'GET',
+    path: '/carro',
+    config:{
+        pre: [
+            {method: Handlers.preHandler.preValidar, assign: 'preTokenVal'}
+        ]
+    },
+    handler:Handlers.carroHandler.mostrarCarros
+},
+{
+    method:'POST',
+    path: '/usuario',
+    handler:Handlers.usuarioHandler.addUsuario
+
+
+},
+{
+    method:'POST',
+    path:'/login',
+    handler: Handlers.usuarioHandler.login
+   
+}
 
 ]

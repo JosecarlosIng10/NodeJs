@@ -18,6 +18,9 @@
   },
   "homepage": "https://github.com/JosecarlosIng10/NodeJs#readme",
   "dependencies": {
-    "hapi": "^17.7.0"
+    "dotenv": "^6.1.0",
+    "hapi": "^17.7.0",
+    "jsonwebtoken": "^8.4.0",
+    "mongoose": "^5.3.12"
   }
 }
